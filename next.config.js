@@ -1,4 +1,16 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  webpack: (config, { isServer }) => {
+    config.module.rules.push({
+      test: /\.(glb|gltf)$/,
+      type: "asset/resource",
+      generator: {
+        filename: "static/chunks/[hash][ext][query]",
+      },
+    });
 
-module.exports = nextConfig
+    return config;
+  },
+};
+
+module.exports = nextConfig;
