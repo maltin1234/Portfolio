@@ -3,10 +3,16 @@ const nextConfig = {
   webpack: (config, { isServer }) => {
     config.module.rules.push({
       test: /\.(glb|gltf)$/,
-      type: "asset/resource",
-      generator: {
-        filename: "static/chunks/[hash][ext][query]",
-      },
+      use: [
+        {
+          loader: "file-loader",
+          options: {
+            publicPath: "/_next/static/chunks/",
+            outputPath: "static/chunks/",
+            name: "[name].[hash].[ext]",
+          },
+        },
+      ],
     });
 
     return config;

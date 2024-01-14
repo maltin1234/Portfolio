@@ -1,11 +1,16 @@
 "use client";
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import ChatBot from "./components/ChatBot"; // Update the path if needed
 import Island from "./models/Island";
 import { Canvas } from "@react-three/fiber";
 import { Loader } from "three";
+import Sky from "./models/sky";
+import { Plane } from "@react-three/drei";
+import Bird from "./models/Bird";
 
 const Home = () => {
+  const [isRotating, setIsRotating] = useState(false);
+
   const adjustIslandForScreenSize = () => {
     let screenScale = null;
     let screenPosition = [0.9, -6.5, -43];
@@ -22,7 +27,7 @@ const Home = () => {
   return (
     <section className="w-full h-screen relative">
       <Canvas
-        className="w-full h-screen bg-transparent"
+        className="w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing : 'cursor-grab'} "
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense>
@@ -34,14 +39,19 @@ const Home = () => {
             groundColor="000000"
             intensity={1}
           />
+          {/* <Bird /> */}
+          <Sky />
+
           <Island
             position={islandPosition}
             scale={islandScale}
             rotation={islandRotation}
+            isRotating={isRotating}
+            setIsRotating={setIsRotating}
           />
         </Suspense>
       </Canvas>
-      <h1>Home Page</h1>
+
       <ChatBot />
     </section>
   );
