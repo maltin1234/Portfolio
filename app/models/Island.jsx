@@ -14,6 +14,7 @@ export function Island({ isRotating, setIsrotating, ...props }) {
   const islandRef = useRef();
   const { gl, viewport } = useThree();
   const { nodes, materials } = useGLTF(island);
+  const { hello } = "jdjs";
   // const lastX = useRef(0);
   // const rotationSpeed = useRef(0.001);
   // const dampingFactor = 0.95;
