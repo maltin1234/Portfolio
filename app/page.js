@@ -3,10 +3,10 @@ import React, { Suspense, useState } from "react";
 import ChatBot from "./components/ChatBot"; // Update the path if needed
 import Island from "./models/Island";
 import { Canvas } from "@react-three/fiber";
-import { Loader } from "three";
-import Sky from "./models/sky";
-import { Plane } from "@react-three/drei";
-import Bird from "./models/Bird";
+// import { Loader } from "three";
+import Sky from "./models/Sky";
+// import { Plane } from "@react-three/drei";
+// import Bird from "./models/Bird";
 
 const Home = () => {
   const [isRotating, setIsRotating] = useState(false);
