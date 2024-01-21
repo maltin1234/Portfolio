@@ -6,9 +6,11 @@ import { Canvas } from "@react-three/fiber";
 // import { Loader } from "three";
 import Sky from "./models/Sky";
 // import { Plane } from "@react-three/drei";
-// import Bird from "./models/Bird";
+import Bird from "./models/Bird";
+import HomeInfo from "./components/HomeInfo";
 
 const Home = () => {
+  const [currentStage, setCurrentStage] = useState(1);
   const [isRotating, setIsRotating] = useState(false);
 
   const adjustIslandForScreenSize = () => {
@@ -26,8 +28,13 @@ const Home = () => {
     adjustIslandForScreenSize();
   return (
     <section className="w-full h-screen relative">
+      <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
+        {currentStage && <HomeInfo currentStage={currentStage} />}
+      </div>
       <Canvas
-        className="w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing : 'cursor-grab'} "
+        className={`w-full h-screen bg-transparent ${
+          isRotating ? "cursor-grabbing" : "cursor-grab"
+        }`}
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense>
@@ -39,14 +46,15 @@ const Home = () => {
             groundColor="000000"
             intensity={1}
           />
-          {/* <Bird /> */}
-          <Sky />
+          <Bird />
+          <Sky isRotating={isRotating} />
 
           <Island
             position={islandPosition}
             scale={islandScale}
             rotation={islandRotation}
             isRotating={isRotating}
+            setCurrentStage={setCurrentStage}
             setIsRotating={setIsRotating}
           />
         </Suspense>
