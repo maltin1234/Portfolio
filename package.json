@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.12.1",
     "@react-three/drei": "^9.92.7",
     "@react-three/fiber": "^8.15.13",
     "file-loader": "^6.2.0",
