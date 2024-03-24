@@ -4,7 +4,7 @@ const HomeInfo = ({ currentStage }) => {
   if (currentStage === 1)
     return (
       <h1 className="sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5">
-        Hi, I'm
+        Hi, I am
         <span className="font-semibold mx-2 text-white">Maltin</span>
         👋
         <br />A Tech enthusiast from Sweden
@@ -79,12 +79,12 @@ const HomeInfo = ({ currentStage }) => {
     return (
       <div className="info-box">
         <p className="font-medium sm:text-xl text-center">
-          Need a project done or looking for a dev? <br /> I'm just a few
+          Need a project done or looking for a dev? <br /> I am just a few
           keystrokes away
         </p>
 
         <Link href="/contact" className="neo-brutalism-white neo-btn">
-          Let's talk
+          Lets talk
           <div className="w-4 h-4 object-contain">
             <svg
               xmlns="http://www.w3.org/2000/svg"
