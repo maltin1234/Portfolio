@@ -22,7 +22,7 @@ export function Island({
   const { nodes, materials } = useGLTF(island);
   const lastX = useRef(0);
 
-  const rotationSpeed = useRef(0.00001); // Adjust this value for a slower initial rotation speed
+  const rotationSpeed = useRef(0.000001); // Adjust this value for a slower initial rotation speed
   const dampingFactor = 0.95;
 
   const handlePointerDown = (e) => {
@@ -46,7 +46,7 @@ export function Island({
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
 
       const delta = (clientX - lastX.current) / viewport.width;
-      islandRef.current.rotation.y += delta * 0.00009 * Math.PI;
+      islandRef.current.rotation.y += delta * 0.00004 * Math.PI;
     }
   };
   useFrame(() => {

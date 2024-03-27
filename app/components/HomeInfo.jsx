@@ -15,7 +15,7 @@ const HomeInfo = ({ currentStage }) => {
     return (
       <div className="info-box">
         <p className="font-medium sm:text-xl text-center">
-          Worked with many companies <br /> and picked up many skills along the
+          Great passion for IT <br /> and picked up many skills along the
           way
         </p>
 
@@ -29,7 +29,7 @@ const HomeInfo = ({ currentStage }) => {
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="w-6 h-6"
+                className="w-6 h-6"
               >
                 <path
                   stroke-linecap="round"
@@ -48,8 +48,7 @@ const HomeInfo = ({ currentStage }) => {
     return (
       <div className="info-box">
         <p className="font-medium text-center sm:text-xl">
-          Led multiple projects to success over the years. <br /> Curious about
-          the impact?
+          Interested in what projects I have made? <br /> Please check out my portfolio
         </p>
 
         <Link href="/projects" className="neo-brutalism-white neo-btn">
@@ -61,7 +60,7 @@ const HomeInfo = ({ currentStage }) => {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-6 h-6"
+              className="w-6 h-6"
             >
               <path
                 stroke-linecap="round"
@@ -92,7 +91,7 @@ const HomeInfo = ({ currentStage }) => {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-6 h-6"
+              className="w-6 h-6"
             >
               <path
                 stroke-linecap="round"

@@ -6,9 +6,9 @@ const useClient = () => {
     const script = document.createElement("script");
     script.onload = () => {
       window.voiceflow.chat.load({
-        verify: { projectID: "657e2b700aaf8485c3064065" },
-        url: "https://general-runtime.voiceflow.com",
-        versionID: "production",
+        verify: { projectID: '657e2b700aaf8485c3064065' },
+        url: 'https://general-runtime.voiceflow.com',
+        versionID: 'production'
       });
     };
     script.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
@@ -25,7 +25,8 @@ const useClient = () => {
 const ChatBot = () => {
   useClient();
 
-  return <div>Hello welcome to chatbot</div>;
+  
+  
 };
 
 export default ChatBot;
