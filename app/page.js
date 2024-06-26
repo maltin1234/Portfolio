@@ -38,7 +38,7 @@ const Home = () => {
           <div className="bg-gray-800 p-8 rounded-lg shadow-lg text-center">
             <h2 className="text-4xl font-extrabold mb-4 text-white">About Me</h2>
             <p className="text-lg text-gray-300 mb-4">
-              Hello! I'm <span className="font-semibold">[Your Name]</span>, a passionate developer with a love for creating dynamic and responsive web applications. I specialize in <span className="font-semibold">[Your Specialization]</span> and enjoy <span className="font-semibold">[Your Hobbies/Interests]</span>.
+              Hello! I'm <span className="font-semibold">Maltin</span>, a passionate techgeek. I love creating projects on my free time. This website will showcase some of my experiements and projects that I can showcse for you with a contemplation of my cv. I specialize in <span className="font-semibold">system support and maintenance</span> and enjoy <span className="font-semibold">networking security, linux and windows </span>.
             </p>
             <p className="text-lg text-gray-300">
               Feel free to explore my projects and get in touch if you'd like to collaborate!
