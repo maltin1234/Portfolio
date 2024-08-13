@@ -12,7 +12,7 @@ const Home = () => {
     {
       imageSrc: "/assets/SoundPlayer.jpg",
       title: "Sound Player Project",
-      description: "This is a smaller project for a support call function at an entrance. The technology used includes Next.js with React, running on a Chrome OS kiosk."
+      description: "This is a smaller project for a support call function at an entrance. The technology used includes Next.js with React, running on a Chrome OS kiosk. This kiosk app was created to be used at my work"
     },
     {
       imageSrc: "/assets/maxico.jpg",
@@ -28,6 +28,11 @@ const Home = () => {
       imageSrc: "/assets/llama.jpg",
       title: "Fine-tuning and Hosting AI",
       description: "I hosted an AI locally on my computer and trained the Llama2 model on a custom dataset from Hugging Face. I am currently working on further developments in this area."
+    },
+    {
+      imageSrc: "/assets/sapcommerce.png",
+      title: "Selenium automated sap robot",
+      description: "I used selenium to automate a robot that made orders for me by specifying the things I needed and what company I wanted to order. This robot was used for myself to make my job easier and faster by automating"
     },
   ];
 
