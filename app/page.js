@@ -5,6 +5,11 @@ import Image from "next/image";
 const Home = () => {
   const projects = [
     {
+      imageSrc: "/assets/lampword.jpg",
+      title: "Cloud based lamp ",
+      description: "I hosted a cloud-based LAMP (Linux, Apache, MySQL, PHP) server with WordPress to build and manage a dynamic website. The setup involved configuring an Apache server on a Linux environment, securing the server using UFW firewalls, and deploying a MySQL database for efficient data management. Additionally, I purchased a domain to give the project a professional presence. This project allowed me to gain hands-on experience with cloud-based server administration, web hosting, and database integration, while ensuring robust security measures were in place."
+    },
+    {
       imageSrc: "/assets/Pazter_1.jpg",
       title: "Chrome Extension",
       description: "I started creating my own Chrome extension using Chromes API to utilize the context menu for pasting notes that I can create myself. I wanted to create this extension to learn how extensions are developed and published, and for security and customization purposes."
