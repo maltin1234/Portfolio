@@ -1,37 +1,139 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#API Endpoints for portfolioapi (Todos)
+List and Create Todos
 
-## Getting Started
+URL: /api/todos/todos/
+Method: GET (list all todos) / POST (create a new todo)
+Description:
+GET: Retrieves a list of all todos.
+POST: Creates a new todo.
+View: TodoListApiView
+Example:
 
-First, run the development server:
+json
+Copy code
+GET /api/todos/todos/
+json
+Copy code
+POST /api/todos/todos/
+{
+  "title": "Buy groceries",
+  "project_description": "Shopping for the weekend",
+  "completed": false,
+  "user": 1
+}
+Retrieve, Update, Delete Todo by ID
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+URL: /api/todos/tod/<pk>/
+Method: GET (retrieve) / PUT (update) / DELETE (delete)
+Description:
+GET: Retrieves the details of a todo by primary key (ID).
+PUT: Updates the details of a todo by primary key (ID).
+DELETE: Deletes a todo by primary key (ID).
+View: TodoDetailApiView
+Example:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+json
+Copy code
+GET /api/todos/tod/1/
+json
+Copy code
+PUT /api/todos/tod/1/
+{
+  "title": "Buy groceries",
+  "project_description": "Shopping for the weekend",
+  "completed": true
+}
+json
+Copy code
+DELETE /api/todos/tod/1/
+Search Todos by Username
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+URL: /api/todos/todotitle
+Method: GET
+Description: Searches for todos based on a query parameter (username) in the request URL.
+View: UserTodosSearchApiView
+Example:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+json
+Copy code
+GET /api/todos/todotitle?user=johndoe
+API Endpoints for users (User Management)
+Register a New User
 
-## Learn More
+URL: /api/users/register/
+Method: POST
+Description: Registers a new user.
+View: RegisterView
+Example:
 
-To learn more about Next.js, take a look at the following resources:
+json
+Copy code
+POST /api/users/register/
+{
+  "username": "johndoe",
+  "password": "password123",
+  "email": "john@example.com"
+}
+Get Profile Details
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+URL: /api/users/profile/
+Method: GET
+Description: Retrieves the profile details of the currently logged-in user.
+View: ProfileDetailView
+Example:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+json
+Copy code
+GET /api/users/profile/
+Get User Info
 
-## Deploy on Vercel
+URL: /api/users/userinfo/
+Method: GET
+Description: Retrieves user information.
+View: UserInfoApiView
+Example:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+json
+Copy code
+GET /api/users/userinfo/
+Authentication Endpoints (JWT)
+Obtain JWT Token
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# portfolio
+URL: /api/token/
+Method: POST
+Description: Obtain a JWT token for authentication.
+View: TokenObtainPairView
+Example:
+
+json
+Copy code
+POST /api/token/
+{
+  "username": "johndoe",
+  "password": "password123"
+}
+Refresh JWT Token
+
+URL: /api/token/refresh/
+Method: POST
+Description: Refresh the JWT token.
+View: TokenRefreshView
+Example:
+
+json
+Copy code
+POST /api/token/refresh/
+{
+  "refresh": "your_refresh_token"
+}
+Static Files and Media Handling
+Media Files: If the project is running in debug mode, media files are served via:
+URL: /media/
+Configured in: settings.MEDIA_URL and settings.MEDIA_ROOT
+By following the URLs and method conventions, you can easily interact with the API endpoints for both user management and todo operations in the portfolioapi project.
+
+
+
+
+
+
