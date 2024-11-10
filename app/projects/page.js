@@ -1,9 +1,11 @@
 
 
 
-export default function Page (){
+export default async function  Page (){
+ 
   return (
     <div className="max-w-4xl mx-auto px-20 py-10">
+    
       <h1 className="text-3xl font-bold mb-12">My Projects</h1>
 
       <div className="relative wrap overflow-hidden p-10 h-full">

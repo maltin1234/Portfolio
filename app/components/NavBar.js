@@ -4,7 +4,9 @@ import Link from "next/link";
 import confetti from 'canvas-confetti';
 import { useState } from 'react';
 
-export default function NavBar() {
+
+export default async function NavBar() {
+ 
   const pathname = usePathname();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -79,6 +81,7 @@ export default function NavBar() {
             Contact
           </div>
         </Link>
+        
       </nav>
     </header>
   );

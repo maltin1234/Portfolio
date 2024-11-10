@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import GetAuthSession from "./components/GetAuthSession";
 
 const Home = () => {
   const projects = [
@@ -40,10 +41,11 @@ const Home = () => {
       description: "I used selenium to automate a robot that made orders for me by specifying the things I needed and what company I wanted to order. This robot was used for myself to make my job easier and faster by automating"
     },
   ];
-
+  
   return (
     <div className="text-white min-h-screen py-10 bg-gray-900">
-      <div className="max-w-6xl mx-auto px-4 py-10">
+     
+     <div className="max-w-6xl mx-auto px-4 py-10">
         <section className="mb-16">
           <div className="bg-gray-800 p-8 rounded-lg shadow-lg text-center">
             <h2 className="text-4xl font-extrabold mb-4 text-white">About Me</h2>
@@ -53,6 +55,7 @@ const Home = () => {
             <p className="text-lg text-gray-300">
               Feel free to explore my projects and get in touch if you would like to collaborate!
             </p>
+            <GetAuthSession></GetAuthSession>
           </div>
         </section>
 
