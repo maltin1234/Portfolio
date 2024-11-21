@@ -1,80 +1,121 @@
-import { FaUser } from "react-icons/fa"; // Import user icon
+import React from "react";
+import { FaUser, FaLinkedin, FaGithub } from "react-icons/fa";
 
-export default function DashCard({ user }) {
+const DashCard = ({ user, onClick }) => {
   const getCardStyle = (rank) => {
     switch (rank) {
       case "Gold":
-        return "bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 border-[3px] border-[#d4af37] shadow-[0_4px_15px_rgba(212,175,55,0.5)]";
+        return "border-[#d4af37]";
       case "Silver":
-        return "bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 border-[3px] border-gray-400 shadow-[0_4px_15px_rgba(192,192,192,0.5)]";
+        return "border-gray-400";
       case "Bronze":
-        return "bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 border-[3px] border-[#cd7f32] shadow-[0_4px_15px_rgba(205,127,50,0.5)]";
+        return "border-[#cd7f32]";
       default:
-        return "bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 border-[3px] border-gray-700 shadow-md";
+        return "border-gray-700";
     }
   };
 
-  const rank = "Gold"; // Example rank
+  // Default hardcoded technologies
+  const defaultTechnologies = ["React", "Node.js", "GraphQL", "Docker", "AWS"];
+
+  // Calculate average rating
+  const calculateAverageRating = (ratings) => {
+    if (!ratings || ratings.length === 0) return "N/A";
+    const total = ratings.reduce((sum, r) => sum + r.rating, 0);
+    return (total / ratings.length).toFixed(1);
+  };
 
   return (
     <div
-      className={`relative ${getCardStyle(
-        rank
-      )} rounded-lg w-96 h-[400px] mx-auto p-6 text-center flex flex-col justify-between`} // Increased height
+      className={`cursor-pointer bg-gradient-to-b from-gray-800 via-gray-700 to-gray-800 border-[3px] ${getCardStyle(
+        user.rank
+      )} shadow-md rounded-lg p-4 flex flex-col items-center`}
+      onClick={onClick}
     >
-      {/* Top Section */}
-      <div>
-        {/* User Avatar */}
-        <div className="rounded-full border-[3px] border-[#d4af37] w-24 h-24 mx-auto bg-gray-800 overflow-hidden shadow-md flex items-center justify-center">
-          {user.avatar ? (
-            <img
-              src={user.avatar}
-              alt="User Avatar"
-              className="object-cover w-full h-full"
-            />
-          ) : (
-            <FaUser className="text-gray-500 text-4xl" />
-          )}
-        </div>
-
-        {/* User Info */}
-        <h2 className="text-xl font-bold text-gray-100 mt-4">{user.username}</h2>
-        <p className="text-gray-300 text-sm mt-2">{user.description || "No description provided."}</p>
-      </div>
-
-      {/* Ratings Section */}
-      <div className="text-left bg-gray-800 bg-opacity-90 rounded-lg p-4 mt-4 overflow-y-auto h-[120px]">
-        <h3 className="text-lg font-bold text-gray-100 mb-2">Ratings:</h3>
-        {user.ratings?.length > 0 ? (
-          user.ratings.map((rating) => (
-            <div
-              key={rating.id}
-              className="bg-gray-900 rounded-lg p-2 mb-2 border border-gray-700"
-            >
-              <p className="text-sm text-gray-300">Feedback: {rating.feedback}</p>
-              <p className="text-sm text-[#d4af37]">Rating: {rating.rating}/5</p>
-            </div>
-          ))
+      {/* User Avatar */}
+      <div className="w-20 h-20 rounded-full bg-gray-700 flex items-center justify-center mb-4">
+        {user.avatar ? (
+          <img
+            src={user.avatar}
+            alt="User Avatar"
+            className="object-cover w-full h-full rounded-full"
+          />
         ) : (
-          <p className="text-gray-300 text-sm">No ratings available.</p>
+          <FaUser className="text-gray-500 text-4xl" />
         )}
       </div>
 
-      {/* Bottom Section */}
-      <div>
-        <a
-          href={user.linkedin_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-400 hover:text-gray-300 underline text-sm inline-block"
-        >
-          View LinkedIn
-        </a>
+      {/* User Info */}
+      <h2 className="text-lg font-semibold text-gray-100">{user.username}</h2>
+      <p className="text-sm text-gray-400 mt-2">
+        {user.profession || "Professional"}
+      </p>
+      <p className="text-gray-300 text-center text-sm mt-2">
+        {user.description || "No description provided."}
+      </p>
 
-        <button className="bg-[#d4af37] text-gray-900 px-6 py-2 mt-4 rounded-lg shadow-md font-semibold hover:bg-[#c3a037] transition duration-200 text-sm">
-          Preview
+      {/* Technology Tags */}
+      <div className="flex flex-wrap justify-center mt-4 gap-2">
+        {(user.technologies || defaultTechnologies).slice(0, 5).map((tech, index) => (
+          <span
+            key={index}
+            className="bg-gray-600 text-gray-100 text-xs px-3 py-1 rounded-full"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+
+      {/* Ratings Section */}
+      <div className="bg-gray-700 bg-opacity-80 p-2 mt-4 rounded-lg w-full">
+        <h3 className="text-sm text-gray-300 font-semibold">
+          Average Rating:{" "}
+          <span className="text-[#d4af37]">{calculateAverageRating(user.ratings)}</span>
+        </h3>
+        {user.ratings &&
+          user.ratings.slice(0, 3).map((rating, index) => (
+            <div
+              key={index}
+              className="text-xs text-gray-300 mt-1 flex justify-between"
+            >
+              <span>Feedback: {rating.feedback}</span>
+              <span className="text-[#d4af37]">Rating: {rating.rating}/5</span>
+            </div>
+          ))}
+      </div>
+
+      {/* Links */}
+      <div className="flex space-x-4 mt-4">
+        {user.linkedin_url && (
+          <a
+            href={user.linkedin_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#0077B5] hover:text-[#005983] transition duration-200"
+          >
+            <FaLinkedin size={20} />
+          </a>
+        )}
+        {user.github_url && (
+          <a
+            href={user.github_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-gray-300 transition duration-200"
+          >
+            <FaGithub size={20} />
+          </a>
+        )}
+      </div>
+
+      {/* View Portfolio Button */}
+      <div className="mt-auto w-full flex justify-center">
+        <button className="bg-[#d4af37] text-gray-900 px-4 py-1 mt-4 rounded-full font-semibold hover:bg-[#c3a037] transition duration-200 text-sm">
+          View Portfolio
         </button>
       </div>
     </div>
   );
-}
+};
+
+export default DashCard;
