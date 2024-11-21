@@ -5,10 +5,11 @@ import { useState } from 'react';
 
 const Providers = ({ children }) => {
   // Create a QueryClient instance
-  const [queryClient] = useState(() => new QueryClient());
+  const [client] = useState( new QueryClient());
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={client}>
+      
       <SessionProvider>{children}</SessionProvider>
     </QueryClientProvider>
   );

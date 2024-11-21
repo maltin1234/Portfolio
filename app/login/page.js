@@ -2,9 +2,7 @@ import { signIn } from "@/auth"
  
 export function SignIn() {
   return (
-    <form
-      
-    >
+    <form >
       <label>
         Email
         <input name="email" type="email" />

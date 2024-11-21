@@ -5,7 +5,7 @@ import confetti from 'canvas-confetti';
 import { useState } from 'react';
 
 
-export default async function NavBar() {
+export default function NavBar() {
  
   const pathname = usePathname();
   const [dropdownOpen, setDropdownOpen] = useState(false);

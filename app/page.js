@@ -55,10 +55,10 @@ const Home = () => {
             <p className="text-lg text-gray-300">
               Feel free to explore my projects and get in touch if you would like to collaborate!
             </p>
-            <GetAuthSession></GetAuthSession>
+           
           </div>
         </section>
-
+      
         <h1 className="text-4xl font-extrabold mb-16 text-center text-white">My Projects</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
