@@ -26,7 +26,8 @@ export default function NavBar() {
   };
 
   return (
-    <header className="header flex items-left justify-between px-6 py-4 bg-gray-900 text-white shadow-md">
+    <header className="sticky top-0 z-10 flex items-left justify-between px-6 py-4 bg-gray-900 text-white shadow-md">
+
       {/* Logo */}
       <Link href="/projectdashboard">
         <div className="flex items-right gap-2 cursor-pointer">
@@ -117,7 +118,7 @@ export default function NavBar() {
        
 
         {/* Create Button */}
-        <Link href="/create">
+        <Link href="/add-project">
           <button className="py-2 px-6 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-500 transition duration-300">
             Create
           </button>
