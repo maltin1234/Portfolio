@@ -42,9 +42,9 @@ export default function NavBar() {
           <span className="text-2xl font-semibold tracking-wide">Dashboard</span>
         </div>
       </Link>
+
 {/* Search Field */}
-{/* Search Field */}
-<div className="relative mx-8 flex grow">
+<div className="relative mx-5 flex grow">
   <input
     type="text"
     placeholder="Search..."

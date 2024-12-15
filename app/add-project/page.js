@@ -1,26 +1,27 @@
 "use client";
-import React, { useState } from "react";
-import AddProjectForm from "@/app/components/AddProjectForm";
+import React from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import  {postProject} from "@/app/api/projects";
+import axios from 'axios';
+import AddProjectForm from "../components/AddProjectForm";
 
 export default function Page() {
-    // Access the client
-  const [projects, setProjects] = useState([]);
-
-  const handleAddProject = (newProject) => {
-    setProjects([...projects, newProject]);
-    console.log("Project added:", newProject); // Replace with API call for backend integration
-  };
+  // Access the React Query client
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white py-10 py-8">
-       <div className="max-w-6xl mx-auto px-4 py-10"></div>
-      <AddProjectForm onSubmit={handleAddProject} />
-      <div className="mt-10 max-w-6xl mx-auto">
+    <div>
+     
+        <AddProjectForm />
         
-    
-      </div>
+     
     </div>
-  );
-};
-
-
+  )
+}
+// mutation.mutate({
+//   title: "A",
+//   image: "B",
+//   project_description: "C",
+//   tags: "D",
+//   link_url: "E",
+//   github_url: "F",
+//   completed: false,

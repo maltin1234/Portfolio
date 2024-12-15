@@ -13,6 +13,7 @@
     "@emailjs/browser": "^3.12.1",
     "@nextui-org/avatar": "^2.0.33",
     "@tanstack/react-query": "^5.60.5",
+    "axios": "^1.7.9",
     "canvas-confetti": "^1.9.3",
     "file-loader": "^6.2.0",
     "next": "^14.2.14",

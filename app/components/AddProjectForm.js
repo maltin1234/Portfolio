@@ -1,58 +1,47 @@
 "use client";
 import React, { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import  {postProject} from "@/app/api/projects";
+import axios from 'axios';
+const AddProjectForm = () => {
 
-const AddProjectForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
-    imageSrc: "",
+     
+   
     title: "",
-    description: "",
+    image: "",
+    project_description: "",
     tags: "",
-    techStack: "",
-    rating: 0,
+    link_url: "",
+    github_url: "",
+    completed: false,
   });
+  
+  const queryClient = useQueryClient();
+  const mutation = useMutation({ mutationFn: postProject })
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  // Define the mutation for adding a project
+  const onCreateTodo = (e) => {
+    e.preventDefault()
+    mutation.mutate({ ...formData })
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const processedData = {
-      ...formData,
-      tags: formData.tags.split(",").map((tag) => tag.trim()),
-      techStack: formData.techStack.split(",").map((tech) => tech.trim()),
-    };
-    onSubmit(processedData);
+  const handleChange = e => {
+    const value = e.target.type === "checkbox" ? e.target.checked : e.target.value
     setFormData({
-      imageSrc: "",
-      title: "",
-      description: "",
-      tags: "",
-      techStack: "",
-      rating: 0,
-    });
-  };
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
+  }
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={onCreateTodo}
       className="bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-xl mx-auto"
     >
       <h2 className="text-2xl font-bold mb-6 text-white">Add New Project</h2>
 
-      <label className="block mb-4">
-        <span className="text-white">Image URL</span>
-        <input
-          type="text"
-          name="imageSrc"
-          value={formData.imageSrc}
-          onChange={handleChange}
-          placeholder="Image URL"
-          className="w-full p-2 mt-1 bg-gray-700 text-white rounded-md"
-        />
-      </label>
-
+      {/* Title Field */}
       <label className="block mb-4">
         <span className="text-white">Title</span>
         <input
@@ -65,19 +54,34 @@ const AddProjectForm = ({ onSubmit }) => {
         />
       </label>
 
+      {/* Description Field */}
       <label className="block mb-4">
         <span className="text-white">Description</span>
         <textarea
-          name="description"
-          value={formData.description}
+          name="project_description"
+          value={formData.project_description}
           onChange={handleChange}
           placeholder="Project Description"
           className="w-full p-2 mt-1 bg-gray-700 text-white rounded-md"
         />
       </label>
 
+      {/* Image Field */}
       <label className="block mb-4">
-        <span className="text-white">Tags (comma-separated)</span>
+        <span className="text-white">Image URL</span>
+        <input
+          type="text"
+          name="image"
+          value={formData.image}
+          onChange={handleChange}
+          placeholder="Project Image URL"
+          className="w-full p-2 mt-1 bg-gray-700 text-white rounded-md"
+        />
+      </label>
+
+      {/* Tags Field */}
+      <label className="block mb-4">
+        <span className="text-white">Tags </span>
         <input
           type="text"
           name="tags"
@@ -88,28 +92,41 @@ const AddProjectForm = ({ onSubmit }) => {
         />
       </label>
 
+      {/* Link URL Field */}
       <label className="block mb-4">
-        <span className="text-white">Tech Stack (comma-separated)</span>
+        <span className="text-white">Link URL</span>
         <input
           type="text"
-          name="techStack"
-          value={formData.techStack}
+          name="link_url"
+          value={formData.link_url}
           onChange={handleChange}
-          placeholder="e.g., Next.js, Node.js"
+          placeholder="e.g., https://example.com"
           className="w-full p-2 mt-1 bg-gray-700 text-white rounded-md"
         />
       </label>
 
+      {/* GitHub URL Field */}
       <label className="block mb-4">
-        <span className="text-white">Rating (1-5)</span>
+        <span className="text-white">GitHub URL</span>
         <input
-          type="number"
-          name="rating"
-          value={formData.rating}
+          type="text"
+          name="github_url"
+          value={formData.github_url}
           onChange={handleChange}
-          min="1"
-          max="5"
+          placeholder="e.g., https://github.com/example"
           className="w-full p-2 mt-1 bg-gray-700 text-white rounded-md"
+        />
+      </label>
+
+      {/* Completed Checkbox */}
+      <label className="block mb-4">
+        <span className="text-white">Completed</span>
+        <input
+          type="checkbox"
+          name="completed"
+          checked={formData.completed}
+          onChange={handleChange}
+          className="ml-2"
         />
       </label>
 
